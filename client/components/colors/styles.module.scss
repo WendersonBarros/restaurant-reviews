@@ -1,0 +1,19 @@
+// These are some of the colors found in the solarized theme
+$background-color: #002b36;
+$secondary-background: #073642;
+$font-color: #839496;
+$secondary-font: #586e75;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+$whitish: #eee8d5;
+
+:root {
+  background-color: $background-color;
+  color: $font-color;
+}

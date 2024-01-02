@@ -1,0 +1,27 @@
+@use "../colors/styles.module.scss" as colors;
+
+header {
+  width: 100%;
+  background-color: colors.$background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  height: 8vh;
+
+  .__logo {
+    width: 2.7em;
+    height: auto;
+    position: absolute;
+    left: .7em;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(85%);
+    }
+  }
+
+  .__title {
+    color: colors.$yellow;
+    font-size: 1.7em;
+  }
+}

@@ -1,0 +1,122 @@
+@use "../../../../components/colors/styles.module.scss" as colors;
+
+.__listWrapper {
+  width: 95%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+
+  &::-webkit-scrollbar {
+    width: .7em;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .__listElementWrapper {
+    width: 100%;
+    display: flex;
+  }
+
+  .__listElement {
+    width: 100%;
+    background-color: colors.$secondary-background;
+    display: flex;
+    border: 1px solid colors.$yellow;
+    border-radius: .5em;
+    padding: .5em;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(90%);
+      border-color: colors.$cyan;
+    }
+
+    .__details {
+      display: flex;
+      flex-direction: column;
+      gap: .7em;
+      width: 97%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .__icon {
+        margin-right: .2em;
+        color: colors.$whitish;
+      }
+
+      .__textContainer {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .__inputRating {
+        font-size: .8em;
+      }
+    }
+
+    .__navigationIcon {
+      font-size: 1.2em;
+      margin-right: 1em;
+      width: 3%;
+      color: colors.$whitish;
+    }
+  }
+
+  .__selectedElement {
+    width: 70%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    border-color: colors.$cyan;
+
+    .__details {
+      width: 95%;
+    }
+
+    .__navigationIcon {
+      width: 5%;
+    }
+  }
+
+  .__hiddenButton {
+    display: none;
+  }
+
+  .__EditButton,
+  .__DelButton {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    color: colors.$whitish;
+    font-size: 1.5em;
+
+    &:hover {
+      filter: brightness(90%);
+    }
+  }
+
+  .__EditButton {
+    background-color: colors.$cyan;
+  }
+
+  .__DelButton {
+    background-color: colors.$red;
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
+  }
+}

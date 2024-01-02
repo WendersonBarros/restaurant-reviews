@@ -74,8 +74,6 @@ app.put("/api/v1/restaurants/:id", async (req, res) => {
       values: [name, location, price_range, id]
     })
 
-    console.log({ name, location, price_range, id, results })
-
     res.status(200).json({
       status: "success",
       data: {

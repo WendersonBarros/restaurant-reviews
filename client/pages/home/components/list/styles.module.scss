@@ -6,7 +6,8 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1.2em;
+  gap: .7em;
+  padding-bottom: .5em;
 
   &::-webkit-scrollbar {
     width: .7em;
@@ -37,6 +38,9 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
 
     &:hover {
       filter: brightness(90%);
@@ -76,7 +80,7 @@
   }
 
   .__selectedElement {
-    width: 70%;
+    width: 55%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: 0;
@@ -95,8 +99,9 @@
     display: none;
   }
 
-  .__EditButton,
-  .__DelButton {
+  .__detailsButton,
+  .__editButton,
+  .__delButton {
     width: 15%;
     display: flex;
     justify-content: center;
@@ -104,17 +109,25 @@
     border: 0;
     color: colors.$whitish;
     font-size: 1.5em;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+    cursor: pointer;
 
     &:hover {
       filter: brightness(90%);
     }
   }
 
-  .__EditButton {
+  .__detailsButton {
+    background-color: colors.$yellow;
+  }
+
+  .__editButton {
     background-color: colors.$cyan;
   }
 
-  .__DelButton {
+  .__delButton {
     background-color: colors.$red;
     border-top-right-radius: .5em;
     border-bottom-right-radius: .5em;

@@ -17,6 +17,7 @@ header {
     cursor: pointer;
     &:hover {
       filter: brightness(85%);
+      transform: scale(1.1);
     }
   }
 

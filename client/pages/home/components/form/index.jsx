@@ -1,4 +1,5 @@
 import styles from "./styles.module.scss";
+import restaurantReviewList from "../../../../apis/restaurantReviewList";
 import { styled } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
 import { FaDollarSign, FaSearch } from "react-icons/fa";
@@ -6,8 +7,9 @@ import { MdFormatListBulletedAdd, MdCleaningServices } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
+import Swal from "sweetalert2";
 
-export default function Form({ setFilters }) {
+export default function Form({ restaurants, setRestaurants, setFilters }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -32,8 +34,8 @@ export default function Form({ setFilters }) {
     setFilters({
       name,
       location,
-      priceRange,
-      stars
+      price_range: priceRange,
+      average_rating: stars
     })
   }, [searchParams, setName, setLocation, setPriceRange, setStars, setFilters])
 
@@ -61,8 +63,75 @@ export default function Form({ setFilters }) {
     },
   });
 
+  const clearInputs = () => {
+    setName("");
+    setLocation("");
+    setPriceRange(null);
+    setStars(null);
+  }
+
   const onChangeInput = (newValue, setState) => {
     setState(newValue);
+  }
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      !name.trim().length
+      || !location.trim().length
+      || !priceRange
+    ) {
+      Swal.fire({
+        title: "Attention",
+        text: "You need to fill in all the fields :)",
+        icon: "warning"
+      });
+
+      return;
+    }
+
+    const restaurantAlreadyExists = restaurants.find(restaurant => {
+      return restaurant.name.toUpperCase() === name.trim().toUpperCase()
+        && restaurant.location.toUpperCase() === location.trim().toUpperCase()
+    });
+
+    if (restaurantAlreadyExists) {
+      Swal.fire({
+        title: "Attention",
+        text: "This restaurant already exists",
+        icon: "warning"
+      });
+
+      return;
+    }
+
+    try {
+      const response = await restaurantReviewList.post("/", {
+        name,
+        location,
+        price_range: priceRange
+      })
+
+      setRestaurants(previousRestaurants => {
+        return [...previousRestaurants, {
+          ...response.data.data.restaurant,
+          ratings: []
+        }]
+      })
+
+      clearInputs();
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Restaurant added successfully =D",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const onSearch = () => {
@@ -76,22 +145,19 @@ export default function Form({ setFilters }) {
     setFilters({
       name,
       location,
-      priceRange,
-      stars
+      price_range: priceRange,
+      average_rating: stars
     })
 
   }
 
   const onClear = () => {
-    setName("");
-    setLocation("");
-    setPriceRange(null);
-    setStars(null);
+    clearInputs();
     setSearchParams({});
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <input
         type="text"
         placeholder="Name"
@@ -136,7 +202,7 @@ export default function Form({ setFilters }) {
 
       <div className={styles.__buttonsRow}>
         <button
-          type="button"
+          type="submit"
           className={styles.__button}
           title="Add"
         >
@@ -164,5 +230,7 @@ export default function Form({ setFilters }) {
 }
 
 Form.propTypes = {
+  restaurants: PropTypes.array,
+  setRestaurants: PropTypes.func,
   setFilters: PropTypes.func
 }

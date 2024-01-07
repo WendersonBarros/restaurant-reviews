@@ -83,7 +83,7 @@ export default function Update() {
 
   return (
     <main>
-      <form onSubmit={onSubmit}>
+      <form className={styles.updateForm} onSubmit={onSubmit}>
         <input
           type="text"
           placeholder="Name"

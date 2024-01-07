@@ -100,11 +100,15 @@ export default function List({ restaurants, setRestaurants, filters }) {
           const filterValue = filters[key];
           const itemValue = restaurant[key];
 
+          if (key === "average_rating") {
+            return Number(itemValue) >= Number(filterValue);
+          }
+
           // If filter has a value, check against it; otherwise, skip the filter for this key
           return !filterValue
             || String(itemValue).toUpperCase().includes(String(filterValue).trim().toUpperCase());
         });
-      }).map((restaurant) => {
+      }).sort((a, b) => b.average_rating - a.average_rating).map((restaurant) => {
         return (
           <div key={restaurant.id} className={styles.__listElementWrapper}>
             <div
@@ -136,6 +140,7 @@ export default function List({ restaurants, setRestaurants, filters }) {
                   <FaUserGroup className={styles.__icon} />
                   <StyledRatingStars
                     name="stars"
+                    precision={0.5}
                     className={styles.__inputRating}
                     value={Number(restaurant.average_rating)}
                     disabled

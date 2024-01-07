@@ -116,7 +116,8 @@ export default function Form({ restaurants, setRestaurants, setFilters }) {
       setRestaurants(previousRestaurants => {
         return [...previousRestaurants, {
           ...response.data.data.restaurant,
-          ratings: []
+          ratings: [],
+          count: 0,
         }]
       })
 
@@ -193,6 +194,7 @@ export default function Form({ restaurants, setRestaurants, setFilters }) {
 
       <StyledRatingStars
         name="stars"
+        precision={0.5}
         className={styles.__inputRating}
         value={stars}
         onChange={(event, newValue) => {

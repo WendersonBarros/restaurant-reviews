@@ -1,0 +1,19 @@
+.infoList {
+  width: 90%;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 1em;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+
+    .__inputRating {
+      font-size: 1em;
+    }
+  }
+}

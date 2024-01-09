@@ -89,9 +89,15 @@ export default function List({ restaurants, setRestaurants, filters }) {
     }
   }
 
+  const onReview = (restaurantId) => {
+    navigate(`/restaurants/${restaurantId}`);
+  }
+
   const onUpdate = (restaurantId) => {
     navigate(`/restaurants/${restaurantId}/update`);
   }
+
+  console.log({restaurants})
 
   return (
     <div className={styles.__listWrapper}>
@@ -158,6 +164,7 @@ export default function List({ restaurants, setRestaurants, filters }) {
 
             <button
               className={clicked === restaurant.id ? styles.__detailsButton : styles.__hiddenButton}
+              onClick={() => onReview(restaurant.id)}
             >
               <BiSolidCommentDetail />
             </button>

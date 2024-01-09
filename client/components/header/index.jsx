@@ -8,22 +8,27 @@ export default function Header() {
   const location = useLocation().pathname;
 
   const navigateToHome = () => {
-    if (location.includes("update")) return navigate("/");
+    if (location.includes("restaurants")) return navigate("/");
 
     return window.open("https://github.com/WendersonBarros/", "_blank", "noreferrer");
   }
 
-  if (location.includes("update")) {
-    return <header>
-      <FcHome className={styles.__logo} onClick={navigateToHome} />
-      <h1 className={styles.__title}>Update Restaurant</h1>
-    </header>
-  }
-
   return (
     <header>
-      <Logo className={styles.__logo} onClick={navigateToHome} />
-      <h1 className={styles.__title}>Restaurant Review List</h1>
+      {location.includes("restaurants")
+        ? <FcHome className={styles.__logo} onClick={navigateToHome} />
+        : <Logo className={styles.__logo} onClick={navigateToHome} />
+      }
+
+      {location.includes("restaurants")
+        ? <h1 className={styles.__title}>
+          {location.includes("update")
+            ? "Update Restaurant"
+            : "Restaurant Reviews"
+          }
+        </h1>
+        : <h1 className={styles.__title}>Restaurant Review List</h1>
+      }
     </header >
   )
 }

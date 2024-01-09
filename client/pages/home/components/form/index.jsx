@@ -116,8 +116,8 @@ export default function Form({ restaurants, setRestaurants, setFilters }) {
       setRestaurants(previousRestaurants => {
         return [...previousRestaurants, {
           ...response.data.data.restaurant,
-          ratings: [],
-          count: 0,
+          average_rating: null,
+          count: null,
         }]
       })
 

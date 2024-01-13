@@ -1,135 +1,135 @@
-@use "../../../../components/colors/styles.module.scss" as colors;
+@use '../../../../components/colors/styles.module.scss' as colors;
 
 .__listWrapper {
-  width: 95%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: .7em;
-  padding-bottom: .5em;
-
-  &::-webkit-scrollbar {
-    width: .7em;
-  }
-
-  &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-  }
-
-  .__listElementWrapper {
-    width: 100%;
+    width: 95%;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
-  }
+    flex-direction: column;
+    gap: 0.7em;
+    padding-bottom: 0.5em;
 
-  .__listElement {
-    width: 100%;
-    background-color: colors.$secondary-background;
-    display: flex;
-    border: 1px solid colors.$yellow;
-    border-radius: .5em;
-    padding: .5em;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease;
-
-    &:hover {
-      filter: brightness(90%);
-      border-color: colors.$cyan;
+    &::-webkit-scrollbar {
+        width: 0.7em;
     }
 
-    .__details {
-      display: flex;
-      flex-direction: column;
-      gap: .7em;
-      width: 97%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
 
-      .__icon {
-        margin-right: .2em;
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .__listElementWrapper {
+        width: 100%;
+        display: flex;
+    }
+
+    .__listElement {
+        width: 100%;
+        background-color: colors.$secondary-background;
+        display: flex;
+        border: 1px solid colors.$yellow;
+        border-radius: 0.5em;
+        padding: 0.5em;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+
+        &:hover {
+            filter: brightness(90%);
+            border-color: colors.$cyan;
+        }
+
+        .__details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7em;
+            width: 97%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            .__icon {
+                margin-right: 0.2em;
+                color: colors.$whitish;
+            }
+
+            .__textContainer {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .__inputRating {
+                font-size: 0.8em;
+            }
+        }
+
+        .__navigationIcon {
+            font-size: 1.2em;
+            margin-right: 1em;
+            width: 3%;
+            color: colors.$whitish;
+        }
+    }
+
+    .__selectedElement {
+        width: 55%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: 0;
+        border-color: colors.$cyan;
+
+        .__details {
+            width: 95%;
+        }
+
+        .__navigationIcon {
+            width: 5%;
+        }
+    }
+
+    .__hiddenButton {
+        display: none;
+    }
+
+    .__detailsButton,
+    .__editButton,
+    .__delButton {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;
         color: colors.$whitish;
-      }
+        font-size: 1.5em;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        cursor: pointer;
 
-      .__textContainer {
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .__inputRating {
-        font-size: .8em;
-      }
+        &:hover {
+            filter: brightness(90%);
+        }
     }
 
-    .__navigationIcon {
-      font-size: 1.2em;
-      margin-right: 1em;
-      width: 3%;
-      color: colors.$whitish;
-    }
-  }
-
-  .__selectedElement {
-    width: 55%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: 0;
-    border-color: colors.$cyan;
-
-    .__details {
-      width: 95%;
+    .__detailsButton {
+        background-color: colors.$yellow;
     }
 
-    .__navigationIcon {
-      width: 5%;
+    .__editButton {
+        background-color: colors.$cyan;
     }
-  }
 
-  .__hiddenButton {
-    display: none;
-  }
-
-  .__detailsButton,
-  .__editButton,
-  .__delButton {
-    width: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    color: colors.$whitish;
-    font-size: 1.5em;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    transition: all .5s ease;
-    cursor: pointer;
-
-    &:hover {
-      filter: brightness(90%);
+    .__delButton {
+        background-color: colors.$red;
+        border-top-right-radius: 0.5em;
+        border-bottom-right-radius: 0.5em;
     }
-  }
-
-  .__detailsButton {
-    background-color: colors.$yellow;
-  }
-
-  .__editButton {
-    background-color: colors.$cyan;
-  }
-
-  .__delButton {
-    background-color: colors.$red;
-    border-top-right-radius: .5em;
-    border-bottom-right-radius: .5em;
-  }
 }

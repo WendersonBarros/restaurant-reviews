@@ -1,50 +1,50 @@
-@use "../../../../components/colors/styles.module.scss" as colors;
+@use '../../../../components/colors/styles.module.scss' as colors;
 
 .reviewForm {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
 }
 
 .__inputText,
 .__textarea {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: colors.$background-color;
-  border: 0;
-  border-radius: .4em;
-  color: colors.$font-color;
-  outline: none;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: colors.$background-color;
+    border: 0;
+    border-radius: 0.4em;
+    color: colors.$font-color;
+    outline: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .__inputText {
-  height: 3em;
-  padding: 0 .6em;
+    height: 3em;
+    padding: 0 0.6em;
 }
 
 .__textarea {
-  width: 100%;
-  resize: none;
-  padding: .6em;
+    width: 100%;
+    resize: none;
+    padding: 0.6em;
 }
 
 .__button {
-  width: 31%;
-  font-size: 1em;
-  color: colors.$font-color;
-  background-color: colors.$background-color;
-  border: 0;
-  border-radius: .4em;
-  padding: .5em 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 31%;
+    font-size: 1em;
+    color: colors.$font-color;
+    background-color: colors.$background-color;
+    border: 0;
+    border-radius: 0.4em;
+    padding: 0.5em 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  &:hover {
-    filter: brightness(90%);
-  }
+    &:hover {
+        filter: brightness(90%);
+    }
 }

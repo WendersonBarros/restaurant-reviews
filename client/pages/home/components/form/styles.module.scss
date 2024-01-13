@@ -1,109 +1,107 @@
-@use "../../../../components/colors/styles.module.scss" as colors;
+@use '../../../../components/colors/styles.module.scss' as colors;
 
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 85%;
-  gap: 1.5em;
-  background: colors.$secondary-background;
-  padding: 1em;
-  border-radius: .5em;
-
-  .__inputText {
-    box-sizing: border-box;
-    width: 85%;
-    height: 3em;
-    background-color: colors.$background-color;
-    border: 0;
-    border-radius: .4em;
-    color: colors.$font-color;
-    outline: none;
-    padding: 0 .6em;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
-
-  .__inputStars {
-    max-height: 1em;
-  }
-
-  .__buttonsRow {
-    width: 80%;
     display: flex;
-    justify-content: space-between;
-
-    .__button {
-      width: 31%;
-      font-size: 1.3em;
-      background-color: colors.$background-color;
-      border: 0;
-      border-radius: .4em;
-      padding: .5em 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        filter: brightness(90%);
-      }
-
-      .__add {
-        color: colors.$green;
-      }
-
-      .__search {
-        color: colors.$cyan;
-      }
-
-      .__clean {
-        color: colors.$red;
-      }
-    }
-  }
-
-}
-
-@media only screen and (min-width: 1300px) {
-  form {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    width: 90%;
-    gap: 0;
+    width: 85%;
+    gap: 1.5em;
+    background: colors.$secondary-background;
     padding: 1em;
+    border-radius: 0.5em;
 
     .__inputText {
-      width: 26%;
-      height: 4em;
+        box-sizing: border-box;
+        width: 85%;
+        height: 3em;
+        background-color: colors.$background-color;
+        border: 0;
+        border-radius: 0.4em;
+        color: colors.$font-color;
+        outline: none;
+        padding: 0 0.6em;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
-    .__inputRating {
-      width: 12%;
-      display: flex;
-      justify-content: center;
+    .__inputStars {
+        max-height: 1em;
     }
 
     .__buttonsRow {
-      width: 21%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
 
-      .__button {
-        width: 31%;
-        max-height: 3em;
-      }
+        .__button {
+            width: 31%;
+            font-size: 1.3em;
+            background-color: colors.$background-color;
+            border: 0;
+            border-radius: 0.4em;
+            padding: 0.5em 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                filter: brightness(90%);
+            }
+
+            .__add {
+                color: colors.$green;
+            }
+
+            .__search {
+                color: colors.$cyan;
+            }
+
+            .__clean {
+                color: colors.$red;
+            }
+        }
     }
-  }
+}
+
+@media only screen and (min-width: 1300px) {
+    form {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        gap: 0;
+        padding: 1em;
+
+        .__inputText {
+            width: 26%;
+            height: 4em;
+        }
+
+        .__inputRating {
+            width: 12%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .__buttonsRow {
+            width: 21%;
+
+            .__button {
+                width: 31%;
+                max-height: 3em;
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: 1560px) {
-  form {
-    .__inputText {
-      width: 28%;
-    }
+    form {
+        .__inputText {
+            width: 28%;
+        }
 
-    .__inputRating {
-      width: 10%;
+        .__inputRating {
+            width: 10%;
+        }
     }
-
-  }
 }

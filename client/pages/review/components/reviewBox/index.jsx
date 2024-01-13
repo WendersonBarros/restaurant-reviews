@@ -1,7 +1,3 @@
 export default function ReviewBox() {
-  return (
-    <div>
-    REVIEWS
-    </div>
-  )
+    return <div>REVIEWS</div>;
 }

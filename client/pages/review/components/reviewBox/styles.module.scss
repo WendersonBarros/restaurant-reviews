@@ -1,0 +1,66 @@
+@use '../../../../components/colors/styles.module.scss' as colors;
+
+.reviewsContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.7em;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .__reviewBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border-radius: .5em;
+    gap: 1em;
+    color: colors.$whitish;
+
+    .__topRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow-wrap: break-word;
+
+      .__ratingStars {
+        font-size: 1em;
+      }
+
+      h4 {
+        margin: 0;
+        color: colors.$secondary-background;
+        max-width: 75%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .__bottomRow {
+      overflow-wrap: break-word;
+    }
+  }
+
+  .__aboveAverage {
+    background-color: colors.$blue;
+  }
+
+  .__belowAverage {
+    background-color: colors.$red;
+  }
+
+}

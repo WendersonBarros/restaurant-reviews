@@ -12,55 +12,87 @@ import styled from '@emotion/styled';
 import { Rating } from '@mui/material';
 
 export default function Review() {
-    const [reviews, setReviews] = useState({});
-    const { id } = useParams();
+  const [restaurant, setRestaurant] = useState({});
+  const [triggerToggle, setTriggerToggle] = useState(false);
+  const { id } = useParams();
 
-    const StyledRatingPrice = styled(Rating)({
-        '& .MuiRating-iconFilled': {
-            color: '#859900',
-        },
+  const StyledRatingPrice = styled(Rating)({
+    '& .MuiRating-iconFilled': {
+      color: '#859900',
+    },
 
-        '& .MuiRating-iconEmpty': {
-            color: '#586e75',
-        },
-    });
+    '& .MuiRating-iconEmpty': {
+      color: '#586e75',
+    },
+  });
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const reviews = await restaurantReviewList.get(`/${id}`);
+  const StyledRatingStars = styled(Rating)({
+    '& .MuiRating-iconEmpty': {
+      color: '#b58900',
+    },
 
-            setReviews(reviews.data.data);
-        };
+    '& .MuiRating-icon': {
+      fontSize: '1.10em',
+    },
+  });
 
-        fetchData();
-    }, [id]);
 
-    return (
-        <main>
-            <ul className={styles.infoList}>
-                <li>
-                    <IoRestaurant />
-                    {reviews.restaurant?.name}
-                </li>
-                <li>
-                    <FaMapLocationDot />
-                    {reviews.restaurant?.location}
-                </li>
-                <li>
-                    <IoIosPricetags />
-                    <StyledRatingPrice
-                        name="price"
-                        className={styles.__inputRating}
-                        value={reviews.restaurant?.price_range}
-                        icon={<FaDollarSign fontSize="inherit" />}
-                        emptyIcon={<FaDollarSign fontSize="inherit" />}
-                        disabled
-                        style={{ opacity: 1 }}
-                    />
-                </li>
-            </ul>
-            <Form />
-            <ReviewBox />
-        </main>
-    );
+  useEffect(() => {
+    const fetchData = async () => {
+      const restaurant = await restaurantReviewList.get(`/${id}`);
+
+      setRestaurant(restaurant.data.data);
+    };
+
+    fetchData();
+  }, [id, triggerToggle]);
+
+  return (
+    <main>
+      <ul className={styles.infoList}>
+        <li>
+          <IoRestaurant />
+          {restaurant.restaurant?.name}
+        </li>
+        <li>
+          <FaMapLocationDot />
+          {restaurant.restaurant?.location}
+        </li>
+        <li>
+          <IoIosPricetags />
+          <StyledRatingPrice
+            name="price"
+            className={styles.__inputRating}
+            value={Number(restaurant.restaurant?.price_range)}
+            icon={<FaDollarSign fontSize="inherit" />}
+            emptyIcon={<FaDollarSign fontSize="inherit" />}
+            disabled
+            style={{ opacity: 1 }}
+          />
+        </li>
+      </ul>
+
+      <Form
+        id={id}
+        restaurant={restaurant}
+        setTriggerToggle={setTriggerToggle}
+      />
+
+      <div className={styles.infoReviews}>
+        <StyledRatingStars
+          name="price"
+          precision={0.5}
+          className={styles.__ratingStars}
+          value={Number(restaurant.restaurant?.average_rating)}
+          disabled
+          style={{ opacity: 1 }}
+        />({restaurant.restaurant?.count ?? 0})
+      </div>
+
+      <ReviewBox
+        restaurant={restaurant}
+        setRestaurant={setRestaurant}
+      />
+    </main>
+  );
 }
